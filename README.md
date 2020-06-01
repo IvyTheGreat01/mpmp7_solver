@@ -12,10 +12,17 @@ Note that the submittable part of the puzzle has length/num_tokens = 6.
 The program will draw all the grids it finds that match the correct solution.
 
 Number of correct solutions found by the program:
+
 n=2 : 3
+
 n=3 : 24
+
 n=4 : 138
+
 n=5 : 268
+
 n=6 : 16
+
 n=7 : 8
+
 n>7 : 0
