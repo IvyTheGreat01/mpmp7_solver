@@ -13,6 +13,9 @@
 #define EMPTY '0'
 
 
+int num_solutions = 0; // The number of correct solutions the program finds 
+
+
 // Get the input from the user for num tokens (equal to grid length) and num threads
 void get_input(int argc, char **argv, long int *n) {
 	if (argc != 2) {
@@ -38,7 +41,10 @@ void display_grid(char *grid, long int n) {
 		}
 	}
 	
-	fprintf(stderr, "=======================\n\n");
+	for (int i = 0; i < n; i++) {
+		fprintf(stderr, "==");
+	}
+	fprintf(stderr, "\n\n");
 }
 
 
@@ -119,6 +125,7 @@ void recursive(char *grid, int **distances, int token_val, long int n, int prev_
 			// This is technically the base case lol
 			if (token_val == n-2) {
 				display_grid(grid, n);
+				num_solutions++;
 
 				for (int i = 0; i < token_val + 1; i++) {
 					distances[token_val][i] = 0;
@@ -191,10 +198,14 @@ int main(int argc, char **argv) {
 	// Get the input for the number size of the grid, and number of threads
 	long int n;
 	get_input(argc, argv, &n);
-	// printf("n: %ld, num_threads: %ld\n", n, num_threads);
+
+	fprintf(stderr, "\n");
 	
 	// Calculating the grids
 	calculate(n);
+
+	// Outputs number of correct solutions
+	fprintf(stderr, "Num Solutions: %d\n", num_solutions);
 
 	return 0;	
 }
