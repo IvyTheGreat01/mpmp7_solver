@@ -4,9 +4,18 @@ Puzzle: https://www.youtube.com/watch?v=M_YOCQaI5QI&feature=emb_logo
 
 Solution: not yet up
 
-To use the program, compile it with the Makefile and run: ./grid positive_integer
+To use the program, compile it with the Makefile and run: ./grid n
 
-The positive_integer argument is the length of the grid as well as the number of tokens on it.
+The 'n' argument must be greater than 1 and is the length of the grid as well as the number of tokens on it.
 Note that the submittable part of the puzzle has length/num_tokens = 6.
 
 The program will draw all the grids it finds that match the correct solution.
+
+Number of correct solutions found by the program:
+n=2 : 3
+n=3 : 24
+n=4 : 138
+n=5 : 268
+n=6 : 16
+n=7 : 8
+n>7 : 0
