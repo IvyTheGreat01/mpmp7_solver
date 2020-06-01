@@ -19,12 +19,12 @@ int num_solutions = 0; // The number of correct solutions the program finds
 // Get the input from the user for num tokens (equal to grid length) and num threads
 void get_input(int argc, char **argv, long int *n) {
 	if (argc != 2) {
-		fprintf(stderr, "Usage: (pos int) num_tokens\n");
+		fprintf(stderr, "Usage: ./grid (int > 1) num_tokens\n");
 		exit(1);
 	}
 	
-	if ((*n = strtol(argv[1], NULL, 10)) <= 0) {
-		fprintf(stderr, "Usage: (pos int) num_tokens\n");
+	if ((*n = strtol(argv[1], NULL, 10)) <= 1) {
+		fprintf(stderr, "Usage: ./grid (int > 1) num_tokens\n");
 		exit(1);
 	}
 }
@@ -126,19 +126,20 @@ void recursive(char *grid, int **distances, int token_val, long int n, int prev_
 			if (token_val == n-2) {
 				display_grid(grid, n);
 				num_solutions++;
-
-				for (int i = 0; i < token_val + 1; i++) {
-					distances[token_val][i] = 0;
-				}
-				grid[index] = EMPTY;
-				return;
+			
+			// If this isn't the last token we recurse onto the next token
+			} else { 
+				recursive(grid, distances, token_val + 1, n, index);
 			}
 
-			// If this isn't the last token we recurse onto the next token
-			recursive(grid, distances, token_val + 1, n, index);
-
 			// Clear this token from the grid so that we can increment this token
-			next_token: grid[index] = EMPTY;
+			next_token:
+
+			for (int i = 0; i < token_val + 1; i++) {
+				distances[token_val][i] = 0;
+			}
+			grid[index] = EMPTY;
+				 			
 		}
 	}
 
