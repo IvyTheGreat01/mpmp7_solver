@@ -1,8 +1,8 @@
 This C program solves Matt Parker's Math Puzzle 7
 
-Puzzle: https://www.youtube.com/watch?v=M_YOCQaI5QI&feature=emb_logo
+Puzzle: https://youtu.be/M_YOCQaI5QI
 
-Solution: not yet up
+Solution: https://youtu.be/G0i_YSFvMb0
 
 To use the program, compile it with the Makefile and run: ./grid n
 
